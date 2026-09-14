@@ -3,13 +3,43 @@ import Nav from "@/components/Nav";
 import HeroSignature from "@/components/HeroSignature";
 import ProjectCard from "@/components/ProjectCard";
 import site from "@/data/site.json";
-import profile from "@/data/profile.json";
-import skills from "@/data/skills.json";
-import experience from "@/data/experience.json";
-import projects from "@/data/projects.json";
 import eduData from "@/data/education.json";
+import { connectDB } from "@/lib/mongodb";
+import ProfileModel from "@/models/Profile";
+import SkillModel from "@/models/Skill";
+import ExperienceModel from "@/models/Experience";
+import ProjectModel from "@/models/Project";
 
-export default function Home() {
+export default async function Home() {
+  await connectDB();
+
+  const [profileDoc, skillDocs, experienceDocs, projectDocs] = await Promise.all([
+    ProfileModel.findOne().lean(),
+    SkillModel.find().sort({ _id: 1 }).lean(),
+    ExperienceModel.find().sort({ sortOrder: 1 }).lean(),
+    ProjectModel.find().sort({ _id: 1 }).lean()
+  ]);
+
+  const profile = {
+    ...profileDoc,
+    about: (profileDoc?.about || "").split("\n\n")
+  };
+
+  // Skills are stored as one document per skill; re-group them by category
+  // to feed the same skill-groups UI the JSON version used.
+  const skills = [];
+  const groupIndexByCategory = new Map();
+  for (const s of skillDocs) {
+    if (!groupIndexByCategory.has(s.category)) {
+      groupIndexByCategory.set(s.category, skills.length);
+      skills.push({ group: s.category, items: [] });
+    }
+    skills[groupIndexByCategory.get(s.category)].items.push(s.name);
+  }
+
+  const experience = experienceDocs.map((e) => ({ ...e, desc: e.description }));
+  const projects = projectDocs.map((p) => ({ ...p, id: p._id.toString() }));
+
   return (
     <>
       <div className="trunk" aria-hidden="true"></div>
