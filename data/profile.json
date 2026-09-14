@@ -1,0 +1,16 @@
+{
+  "photo": "/images/profile.png",
+  "roleLine": "Electrical Engineer / Full-Stack Developer / AI Engineering Student",
+  "lede": "Combining engineering principles, software development, and artificial intelligence to build web applications, AI-powered automation, and reliable electrical systems — from concept through deployment.",
+  "about": [
+    "Results-driven Electrical Engineer, Full-Stack Software Developer, and AI Engineering student combining engineering principles, software development, and artificial intelligence to solve real-world problems.",
+    "Skilled in designing and building modern web applications, backend systems, REST APIs, database-driven platforms, authentication systems, AI-powered applications, and business automation solutions using React, Node.js, Express, Python, and MongoDB.",
+    "Currently studying AI Engineering at Miva University while independently delivering contract-based electrical engineering and software development projects — taking products from concept and design through deployment and continuous improvement."
+  ],
+  "quickFacts": [
+    { "k": "Currently", "v": "AI Engineering, Miva University" },
+    { "k": "Based in", "v": "Akwa Ibom State, Nigeria" },
+    { "k": "Working on", "v": "BislyAI — AI business automation platform" },
+    { "k": "Available for", "v": "Full-stack, AI integration & electrical contract work" }
+  ]
+}

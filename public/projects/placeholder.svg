@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340">
+<rect width="600" height="340" fill="#111922"/>
+<rect x="0.5" y="0.5" width="599" height="339" fill="none" stroke="#1c2733"/>
+<circle cx="300" cy="150" r="34" fill="none" stroke="#2de2c8" stroke-width="1.5" opacity="0.7"/>
+<path d="M300 116 L300 90 M300 184 L300 210 M266 150 L240 150 M334 150 L360 150" stroke="#2de2c8" stroke-width="1.5" opacity="0.7"/>
+<circle cx="300" cy="150" r="6" fill="#2de2c8" opacity="0.9"/>
+<text x="300" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#5c6774">Project image goes here</text>
+<text x="300" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3d4652">Add a screenshot in data/projects.json</text>
+</svg>

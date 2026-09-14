@@ -1,0 +1,13 @@
+{
+  "education": [
+    { "t": "AI Engineering (in progress)", "s": "Miva University", "d": "Current" },
+    { "t": "HND, Electronics & Telecom. Tech.", "s": "Akwa Ibom State Polytechnic", "d": "2021" },
+    { "t": "ND, Electrical & Electronics Eng.", "s": "Akwa Ibom State Polytechnic", "d": "2017" },
+    { "t": "SSCE", "s": "Community Secondary School, Idoro", "d": "2013" }
+  ],
+  "certifications": [
+    { "t": "Full-Stack Web & Software Development", "s": "Digital Regenesys School", "d": "2024 – 2025" },
+    { "t": "NYSC Discharge Certificate", "s": "", "d": "2023" },
+    { "t": "Diploma, Graphic Design & Data Processing", "s": "Prodigy Academy", "d": "2018 – 2019" }
+  ]
+}

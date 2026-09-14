@@ -1,0 +1,26 @@
+[
+  {
+    "role": "Self-employed / Contract software & electrical engineer",
+    "org": "Independent contractor",
+    "date": "2024 — present",
+    "desc": "Design and develop full-stack web applications using React, Node.js, Express, and MongoDB, including secure authentication, API integrations, and admin dashboards. Build AI-powered applications and automation systems that embed intelligent assistants into business workflows. Deliver customized digital platforms from concept through production deployment, alongside contract electrical engineering work: system design, fault diagnosis, load assessment, and preventive maintenance."
+  },
+  {
+    "role": "Manager",
+    "org": "Prodigy Academy",
+    "date": "Sep 2019 — Nov 2023",
+    "desc": "Managed daily operations and coordinated teams to meet organizational objectives, improving workflow and productivity. Monitored performance metrics to support data-informed decisions, mentored staff, and managed operational priorities."
+  },
+  {
+    "role": "Class teacher",
+    "org": "Christian International College",
+    "date": "Jan 2020 — Dec 2022",
+    "desc": "Planned and delivered curriculum-aligned lessons, assessed performance, and adapted teaching strategies to outcomes. Developed learning materials and provided individualized support, strengthening communication and analytical skills."
+  },
+  {
+    "role": "Electrical engineer",
+    "org": "Cartlark International Ltd.",
+    "date": "Dec 2016 — Aug 2019",
+    "desc": "Supported design, testing, maintenance, and troubleshooting of electrical systems and equipment. Diagnosed faults, implemented corrective measures, and conducted preventive maintenance to improve reliability."
+  }
+]

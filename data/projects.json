@@ -1,0 +1,46 @@
+[
+  {
+    "id": "bislyai",
+    "name": "BislyAI",
+    "role": "Founder / Full-Stack & AI Developer",
+    "description": "AI-powered business automation platform providing multi-company workspaces with AI assistants, WhatsApp integration, human handover, invoicing, order management, and workflow automation.",
+    "image": "/projects/placeholder.svg",
+    "link": "",
+    "repo": "",
+    "tech": ["React", "Node.js", "Express", "MongoDB", "AI APIs", "WhatsApp integration"],
+    "featured": true
+  },
+  {
+    "id": "studenttoolng",
+    "name": "StudentToolNG",
+    "role": "Founder / Full-Stack Developer",
+    "description": "Educational technology platform offering CGPA/WAEC/JAMB tools, AI tutoring, AI-generated quizzes, and a math problem-solving engine for students.",
+    "image": "/projects/placeholder.svg",
+    "link": "",
+    "repo": "",
+    "tech": ["React", "Node.js", "Express", "MongoDB", "AI APIs", "Vercel", "Render"],
+    "featured": true
+  },
+  {
+    "id": "ai-math-engine",
+    "name": "AI-powered mathematics engine",
+    "role": "Full-Stack & AI Developer",
+    "description": "Intelligent system for solving percentage, algebraic, and set-theory problems with structured, step-by-step results and history tracking.",
+    "image": "/projects/placeholder.svg",
+    "link": "",
+    "repo": "",
+    "tech": ["React", "Node.js", "Express", "Python", "MongoDB", "AI integration"],
+    "featured": false
+  },
+  {
+    "id": "ibiono-lg-platform",
+    "name": "Ibiono Ibom LG digital platform",
+    "role": "Full-Stack Developer",
+    "description": "Government information and administration platform for news, leadership, offices, and media, backed by secure APIs and database-driven admin tools.",
+    "image": "/projects/placeholder.svg",
+    "link": "",
+    "repo": "",
+    "tech": ["React", "Node.js", "Express", "MongoDB", "REST APIs", "Auth"],
+    "featured": false
+  }
+]

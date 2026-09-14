@@ -1,0 +1,32 @@
+{
+  "siteUrl": "https://henryakpan.dev",
+  "name": "Henry Mfon Akpan",
+  "shortName": "Henry Akpan",
+  "role": "Electrical Engineer & Full-Stack Software Developer",
+  "titleTemplate": "%s | Henry Mfon Akpan",
+  "defaultTitle": "Henry Mfon Akpan — Electrical Engineer & Full-Stack Developer",
+  "description": "Henry Mfon Akpan is an Electrical Engineer, Full-Stack Software Developer, and AI Engineering student based in Akwa Ibom, Nigeria, building web applications, AI-powered automation, and electrical systems.",
+  "keywords": [
+    "Henry Mfon Akpan",
+    "Henry Akpan",
+    "EngrHenryTech",
+    "Electrical Engineer Nigeria",
+    "Full-Stack Developer Nigeria",
+    "AI Engineer Nigeria",
+    "React developer Akwa Ibom",
+    "BislyAI founder",
+    "StudentToolNG founder"
+  ],
+  "email": "henryengrakpan@gmail.com",
+  "phone": "+2349028361165",
+  "location": {
+    "addressLocality": "Ibiono Ibom",
+    "addressRegion": "Akwa Ibom State",
+    "addressCountry": "NG"
+  },
+  "social": {
+    "linkedin": "https://linkedin.com/in/engrhenrytech",
+    "github": ""
+  },
+  "twitterHandle": ""
+}

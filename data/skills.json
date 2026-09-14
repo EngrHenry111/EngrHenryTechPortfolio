@@ -1,0 +1,22 @@
+[
+  {
+    "group": "Full-stack development",
+    "items": ["React.js", "JavaScript", "HTML5/CSS3", "Node.js", "Express.js", "REST APIs", "Auth & authorization"]
+  },
+  {
+    "group": "Programming & data",
+    "items": ["Python", "JavaScript", "MongoDB", "Mongoose", "SQL / NoSQL", "Database design"]
+  },
+  {
+    "group": "Artificial intelligence",
+    "items": ["AI app & chatbot dev", "Generative AI", "API integration", "Prompt engineering", "Business automation"]
+  },
+  {
+    "group": "DevOps & tools",
+    "items": ["Git & GitHub", "Docker", "Vercel", "Render", "MongoDB Atlas", "Linux / WSL"]
+  },
+  {
+    "group": "Electrical engineering",
+    "items": ["System design", "Load calculations", "Power distribution", "Fault diagnosis", "Preventive maintenance"]
+  }
+]
