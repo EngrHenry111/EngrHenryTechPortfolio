@@ -77,6 +77,7 @@ export default function RootLayout({ children }) {
       site.social.instagram,
       site.social.twitter,
       site.social.tiktok,
+      site.social.youtube,
       site.social.github
     ].filter(Boolean),
     knowsAbout: [

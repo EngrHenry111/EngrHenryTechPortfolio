@@ -59,6 +59,7 @@ export default async function Home() {
     { label: "Instagram", href: site.social.instagram },
     { label: "X (Twitter)", href: site.social.twitter },
     { label: "TikTok", href: site.social.tiktok },
+    { label: "YouTube", href: site.social.youtube },
     { label: "GitHub", href: site.social.github }
   ].filter((s) => s.href);
 
