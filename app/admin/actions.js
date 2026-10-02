@@ -15,7 +15,12 @@ export async function login(prevState, formData) {
     await new Promise((r) => setTimeout(r, 1000));
     return { error: "Incorrect password." };
   }
-  await createSession();
+  try {
+    await createSession();
+  } catch (err) {
+    console.error(err);
+    return { error: "Server setup problem: SESSION_SECRET is missing or shorter than 32 characters in Vercel's Environment Variables." };
+  }
   redirect("/admin");
 }
 
