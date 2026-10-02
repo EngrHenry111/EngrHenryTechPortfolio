@@ -1,30 +1,14 @@
 import site from "@/data/site.json";
 
+// Single-page site: section anchors (#projects etc.) are ignored by search
+// engines, so only the homepage is listed.
 export default function sitemap() {
   return [
     {
       url: site.siteUrl,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "weekly",
       priority: 1
-    },
-    {
-      url: `${site.siteUrl}#projects`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8
-    },
-    {
-      url: `${site.siteUrl}#experience`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6
-    },
-    {
-      url: `${site.siteUrl}#contact`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.5
     }
   ];
 }
