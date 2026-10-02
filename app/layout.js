@@ -32,6 +32,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    creator: site.twitterHandle || undefined,
     title: site.defaultTitle,
     description: site.description,
     images: [profile.photo]
@@ -70,7 +71,14 @@ export default function RootLayout({ children }) {
       addressRegion: site.location.addressRegion,
       addressCountry: site.location.addressCountry
     },
-    sameAs: [site.social.linkedin].filter(Boolean),
+    sameAs: [
+      site.social.linkedin,
+      site.social.facebook,
+      site.social.instagram,
+      site.social.twitter,
+      site.social.tiktok,
+      site.social.github
+    ].filter(Boolean),
     knowsAbout: [
       "Full-Stack Web Development",
       "React",

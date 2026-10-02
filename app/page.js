@@ -52,6 +52,16 @@ export default async function Home() {
   const projects = projectDocs.map((p) => ({ ...p, id: p._id.toString(), tech: p.tech || [] }));
   const achievements = achievementDocs.map((a) => ({ ...a, id: a._id.toString() }));
 
+  const socialLinks = [
+    { label: "WhatsApp", href: site.social.whatsapp },
+    { label: "LinkedIn", href: site.social.linkedin },
+    { label: "Facebook", href: site.social.facebook },
+    { label: "Instagram", href: site.social.instagram },
+    { label: "X (Twitter)", href: site.social.twitter },
+    { label: "TikTok", href: site.social.tiktok },
+    { label: "GitHub", href: site.social.github }
+  ].filter((s) => s.href);
+
   // Leadership and Achievements sections only appear once they have content.
   const navLinks = [
     { href: "#about", label: "About" },
@@ -269,6 +279,13 @@ export default async function Home() {
             <div className="icon"><svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
             <div><div className="lbl">Location</div><div className="val">{site.location.addressLocality}, {site.location.addressRegion}, Nigeria</div></div>
           </div>
+        </div>
+        <div className="social-row">
+          {socialLinks.map((s) => (
+            <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="social-link">
+              {s.label}
+            </a>
+          ))}
         </div>
       </section>
 
