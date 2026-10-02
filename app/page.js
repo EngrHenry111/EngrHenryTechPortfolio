@@ -12,6 +12,10 @@ import ProjectModel from "@/models/Project";
 import AchievementModel from "@/models/Achievement";
 import { LEADERSHIP } from "@/lib/admin-collections";
 
+// Admin saves refresh the page instantly; this also picks up direct database
+// edits within 5 minutes.
+export const revalidate = 300;
+
 export default async function Home() {
   await connectDB();
 
