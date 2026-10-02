@@ -9,7 +9,9 @@ const ProjectSchema = new mongoose.Schema(
     link: String,
     repo: String,
     tech: [String],
-    featured: { type: Boolean, default: false }
+    featured: { type: Boolean, default: false },
+    sortOrder: { type: Number, default: 0 },
+    sortOrder: { type: Number, default: 0 }
   },
   { timestamps: true }
 );

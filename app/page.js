@@ -9,20 +9,25 @@ import ProfileModel from "@/models/Profile";
 import SkillModel from "@/models/Skill";
 import ExperienceModel from "@/models/Experience";
 import ProjectModel from "@/models/Project";
+import AchievementModel from "@/models/Achievement";
+import { LEADERSHIP } from "@/lib/admin-collections";
 
 export default async function Home() {
   await connectDB();
 
-  const [profileDoc, skillDocs, experienceDocs, projectDocs] = await Promise.all([
+  const [profileDoc, skillDocs, experienceDocs, projectDocs, achievementDocs] = await Promise.all([
     ProfileModel.findOne().lean(),
     SkillModel.find().sort({ _id: 1 }).lean(),
-    ExperienceModel.find().sort({ sortOrder: 1 }).lean(),
-    ProjectModel.find().sort({ _id: 1 }).lean()
+    ExperienceModel.find().sort({ sortOrder: 1, _id: 1 }).lean(),
+    ProjectModel.find().sort({ sortOrder: 1, _id: 1 }).lean(),
+    AchievementModel.find().sort({ sortOrder: 1, _id: 1 }).lean()
   ]);
 
   const profile = {
     ...profileDoc,
-    about: (profileDoc?.about || "").split("\n\n")
+    quickFacts: profileDoc?.quickFacts || [],
+    roleParts: (profileDoc?.roleLine || "").split("/").map((s) => s.trim()).filter(Boolean),
+    about: (profileDoc?.about || "").split(/\n\s*\n/).filter(Boolean)
   };
 
   // Skills are stored as one document per skill; re-group them by category
@@ -37,20 +42,39 @@ export default async function Home() {
     skills[groupIndexByCategory.get(s.category)].items.push(s.name);
   }
 
-  const experience = experienceDocs.map((e) => ({ ...e, desc: e.description }));
-  const projects = projectDocs.map((p) => ({ ...p, id: p._id.toString() }));
+  const allExperience = experienceDocs.map((e) => ({ ...e, id: e._id.toString(), desc: e.description }));
+  const experience = allExperience.filter((e) => e.category !== LEADERSHIP);
+  const leadership = allExperience.filter((e) => e.category === LEADERSHIP);
+  const projects = projectDocs.map((p) => ({ ...p, id: p._id.toString(), tech: p.tech || [] }));
+  const achievements = achievementDocs.map((a) => ({ ...a, id: a._id.toString() }));
+
+  // Leadership and Achievements sections only appear once they have content.
+  const navLinks = [
+    { href: "#about", label: "About" },
+    { href: "#skills", label: "Skills" },
+    { href: "#experience", label: "Experience" },
+    leadership.length > 0 && { href: "#leadership", label: "Leadership" },
+    { href: "#projects", label: "Projects" },
+    achievements.length > 0 && { href: "#achievements", label: "Achievements" },
+    { href: "#education", label: "Education" },
+    { href: "#contact", label: "Contact" }
+  ].filter(Boolean);
 
   return (
     <>
       <div className="trunk" aria-hidden="true"></div>
-      <Nav />
+      <Nav links={navLinks} />
 
       <section id="top" className="hero wrap">
         <div className="hero-grid">
           <div>
             <p className="hero-role">
-              Electrical Engineer <span className="sep">/</span> Full-Stack Developer{" "}
-              <span className="sep">/</span> AI Engineering Student
+              {profile.roleParts.map((part, i) => (
+                <span key={part}>
+                  {i > 0 && <>{" "}<span className="sep">/</span>{" "}</>}
+                  {part}
+                </span>
+              ))}
             </p>
             <h1 className="name" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0 0 0 0)" }}>
               {site.name}
@@ -125,7 +149,7 @@ export default async function Home() {
         <h2 className="section-title">Professional path</h2>
         <div className="timeline">
           {experience.map((e) => (
-            <div className="tl-item" key={e.role + e.date}>
+            <div className="tl-item" key={e.id}>
               <p className="tl-role">{e.role}</p>
               <p className="tl-org">{e.org}</p>
               <p className="tl-date">{e.date}</p>
@@ -135,12 +159,28 @@ export default async function Home() {
         </div>
       </section>
 
+      {leadership.length > 0 && (
+        <section id="leadership" className="wrap">
+          <p className="eyebrow">Leadership</p>
+          <h2 className="section-title">Leadership &amp; public service</h2>
+          <div className="timeline">
+            {leadership.map((e) => (
+              <div className="tl-item" key={e.id}>
+                <p className="tl-role">{e.role}</p>
+                <p className="tl-org">{e.org}</p>
+                <p className="tl-date">{e.date}</p>
+                <p className="tl-desc">{e.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section id="projects" className="wrap">
         <p className="eyebrow">Projects</p>
         <h2 className="section-title">Selected technology projects</h2>
         <p className="section-sub">
-          To add a new project: open <code>data/projects.json</code>, add an entry with a name, description,
-          image path (drop the file in <code>public/projects/</code>), live link, and tech stack.
+          Platforms and products I&apos;ve designed, built, and shipped — from AI automation to civic technology.
         </p>
         <div className="project-grid">
           {projects.map((p) => (
@@ -148,6 +188,36 @@ export default async function Home() {
           ))}
         </div>
       </section>
+
+      {achievements.length > 0 && (
+        <section id="achievements" className="wrap">
+          <p className="eyebrow">Achievements</p>
+          <h2 className="section-title">Awards &amp; recognition</h2>
+          <div className="project-grid">
+            {achievements.map((a) => (
+              <div className="board project-card" key={a.id}>
+                {a.image && (
+                  <div className="project-thumb">
+                    <Image src={a.image} alt={a.title} fill sizes="(max-width: 700px) 100vw, 340px" style={{ objectFit: "cover" }} />
+                  </div>
+                )}
+                <div className="project-body">
+                  <h3>{a.title}</h3>
+                  {(a.issuer || a.date) && (
+                    <p className="project-role">{[a.issuer, a.date].filter(Boolean).join(" · ")}</p>
+                  )}
+                  {a.description && <p className="project-desc">{a.description}</p>}
+                  {a.link && (
+                    <div className="project-links">
+                      <a href={a.link} target="_blank" rel="noopener noreferrer">View</a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section id="education" className="wrap">
         <p className="eyebrow">Education & certifications</p>

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import site from "@/data/site.json";
 
-const links = [
+const defaultLinks = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#experience", label: "Experience" },
@@ -11,7 +11,7 @@ const links = [
   { href: "#contact", label: "Contact" }
 ];
 
-export default function Nav() {
+export default function Nav({ links = defaultLinks }) {
   const [open, setOpen] = useState(false);
 
   return (
